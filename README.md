@@ -4,4 +4,4 @@ In this repo, I aim to explore and offer detailed explanations of the process in
 In this segment of the Python example code, I will discusse some helper functions that will be utilized during the implementation:
 
 **1-"find_data_folders (root_folder)" function:**
-This function was designed to search through "training" parent directory (given by root_folder) to list subdirectories folders in the `data_folders` variable. `data_folders` contains the name of the folders if a file with the same name within that folder and only with a '.txt' extension, exists. 
+This function was designed to search through "training" parent directory (given by root_folder) to list subdirectories folders in the `data_folders` variable. `data_folders` contains the list of folder names (patient numbers) for which a corresponding .txt file exists inside their respective folder. For instance, if in the directory for patient "0284" there is a file named 0284.txt, then "0284" will be added to the data_folders list.
