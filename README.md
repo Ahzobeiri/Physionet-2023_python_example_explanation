@@ -3,5 +3,5 @@ In this repo, I aim to explore and offer detailed explanations of the process in
 # helper_code
 In this segment of the Python example code, I will discusse some helper functions that will be utilized during the implementation:
 
-**1-"find_data_folders(root_folder)" function:**
-This function was designed to search through "training" parent directory (given by root_folder) to find and list subdirectories folders in `data_folders` name that contain the same name data files only in addition to '.txt' extension. 
+**1-"find_data_folders (root_folder)" function:**
+This function was designed to search through "training" parent directory (given by root_folder) to list subdirectories folders in the `data_folders` variable. `data_folders` contains the name of the folders if a file with the same name within that folder and only with a '.txt' extension, exists. 
