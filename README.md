@@ -19,4 +19,15 @@ def find_data_folders(root_folder):
                 data_folders.append(x)
     return sorted(data_folders))
 ```
-This function was designed to search through "training" parent directory (given by root_folder) to list subdirectories folders in the `data_folders` variable. `data_folders` contains the list of folder names (patient numbers) for which a corresponding .txt file exists inside their respective folder. For instance, if in the directory for patient "0284" there is a file named 0284.txt, then "0284" will be added to the data_folders list.
+This function is designed to search through "training" parent directory (given by root_folder) to list subdirectories folders in the `data_folders` variable. `data_folders` contains the list of folder names (patient numbers) for which a corresponding .txt file exists inside their respective folder. For instance, if in the directory for patient "0284" there is a file named 0284.txt, then "0284" will be added to the `data_folders` list.
+
+
+**2-load_challenge_data function
+```python
+# Load the patient metadata: age, sex, etc.
+def load_challenge_data(data_folder, patient_id):
+    patient_metadata_file = os.path.join(data_folder, patient_id, patient_id + '.txt')
+    patient_metadata = load_text_file(patient_metadata_file)
+    return patient_metadata
+```
+The function constructs the full path to the patient's metadata file by concatenating `data_folder` (on I-care data structure corresponds to "training" path), `patient_id` (corresponds to patients folder, for example, "0284"), and the metadata file name (`patient_id + '.txt'`, for example, 0.284.txt). Then the content of the file is read and returned whenever this function calls (eg, `load_challenge_data("training", "0284")`) 
