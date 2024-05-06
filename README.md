@@ -7,7 +7,7 @@ First of all, we will start with the [helper_code]([https://github.com/physionet
 # helper_code
 In this segment of the Python example code, I will discusse some helper functions that will be utilized during the implementation:
 
-**1-"find_data_folders (root_folder)" function:**
+**1- find_data_folders (root_folder) function:**
 ```python
 def find_data_folders(root_folder):
     data_folders = list()
@@ -22,7 +22,7 @@ def find_data_folders(root_folder):
 This function is designed to search through "training" parent directory (given by root_folder) to list subdirectories folders in the `data_folders` variable. `data_folders` contains the list of folder names (patient numbers) for which a corresponding .txt file exists inside their respective folder. For instance, if in the directory for patient "0284" there is a file named 0284.txt, then "0284" will be added to the `data_folders` list.
 
 
-**2-load_challenge_data function
+**2- load_challenge_data function:**
 ```python
 # Load the patient metadata: age, sex, etc.
 def load_challenge_data(data_folder, patient_id):
