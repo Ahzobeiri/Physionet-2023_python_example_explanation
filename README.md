@@ -8,4 +8,15 @@ First of all, we will start with the [helper_code]([https://github.com/physionet
 In this segment of the Python example code, I will discusse some helper functions that will be utilized during the implementation:
 
 **1-"find_data_folders (root_folder)" function:**
+```python
+def find_data_folders(root_folder):
+    data_folders = list()
+    for x in sorted(os.listdir(root_folder)):
+        data_folder = os.path.join(root_folder, x)
+        if os.path.isdir(data_folder):
+            data_file = os.path.join(data_folder, x + '.txt')
+            if os.path.isfile(data_file):
+                data_folders.append(x)
+    return sorted(data_folders))
+```
 This function was designed to search through "training" parent directory (given by root_folder) to list subdirectories folders in the `data_folders` variable. `data_folders` contains the list of folder names (patient numbers) for which a corresponding .txt file exists inside their respective folder. For instance, if in the directory for patient "0284" there is a file named 0284.txt, then "0284" will be added to the data_folders list.
