@@ -30,4 +30,4 @@ def load_challenge_data(data_folder, patient_id):
     patient_metadata = load_text_file(patient_metadata_file)
     return patient_metadata
 ```
-The function constructs the full path to the patient's metadata file by concatenating `data_folder` (on I-care data structure corresponds to "training" path), `patient_id` (corresponds to patients folder, for example, "0284"), and the metadata file name (`patient_id + '.txt'`, for example, 0.284.txt). Then the content of the file is read and returned whenever this function calls (eg, `load_challenge_data("training", "0284")`) 
+The function constructs the full path to the patient's metadata file by concatenating `data_folder` (on I-care data structure corresponds to "training" path), `patient_id` (corresponds to patients folder, e.g. "0284"), and the metadata file name (`patient_id + '.txt'`, e.g. 0.284.txt). Then the content of the file is read and returned whenever this function calls (e.g. `load_challenge_data("training", "0284")`) 
