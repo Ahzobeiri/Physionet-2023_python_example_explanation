@@ -45,11 +45,11 @@ def find_recording_files(data_folder, patient_id):
             record_names.add(record_name)
     return sorted(record_names)
 ```
-This function is designed to identify and list the names of header files with ".hea" regardless of their signal types (e.g. EEG, ECG, and OTHER). Consider the following picture which I took from the data structure of patient "0284" from [I-Care](https://physionet.org/content/i-care/2.1/training/0284/#files-panel) dataset
+This function is designed to identify and list the names of header files with ".hea" regardless of their signal types (e.g. EEG, ECG, and OTHER). Consider the following picture which I took from the data structure of patient "0284" from [I-Care](https://physionet.org/content/i-care/2.1/training/0284/#files-panel) dataset:
 
 <div align="center">
 <img src="I-care pic.JPG" alt="Alt text" width="850" height="450">
 </div>
 
-
-full path to the patient's metadata file by concatenating `data_folder` (on I-care data structure corresponds to "training" path), `patient_id` (corresponds to patients folder, e.g. "0284"), and the metadata file name (`patient_id + '.txt'`, e.g. 0.284.txt). Then the content of the file is read and returned whenever this function calls (e.g. `load_challenge_data("training", "0284")`) 
+This function returns the unique names of [0284_001_004, 0284_002_005, 0284_003_006, ..., 0284_085_074] as the `record_names` list
+ 
