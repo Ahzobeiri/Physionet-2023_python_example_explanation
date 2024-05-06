@@ -48,7 +48,7 @@ def find_recording_files(data_folder, patient_id):
 This function is designed to identify and list the names of header files with ".hea" regardless of their signal types (e.g. EEG, ECG, and OTHER). Consider the following picture which I took from the data structure of patient "0284" from [I-Care](https://physionet.org/content/i-care/2.1/training/0284/#files-panel) dataset
 
 <div align="center">
-<img src="I-care pic.JPG" alt="Alt text" width="800" height="450">
+<img src="I-care pic.JPG" alt="Alt text" width="850" height="450">
 </div>
 
 
