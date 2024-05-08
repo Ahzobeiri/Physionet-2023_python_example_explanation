@@ -71,4 +71,4 @@ def load_recording_data(record_name, check_values=False):
     with open(header_file, 'r') as f:
         header = [l.strip() for l in f.readlines() if l.strip()]
 ```
-This function is designed to load data once the header_file's existence is confirmed, the code opens the header file and reads all the lines, strips any leading or trailing whitespace from  each line, and also excludes any empty line. The result is stored in the list and list `header`.
+This function is designed to load data from the header_file while its existence is confirmed. The code first opens the header file and reads all the lines, strips any leading or trailing whitespace from  each line, and also excludes any empty line. The result is then stored in the list named `header`.
