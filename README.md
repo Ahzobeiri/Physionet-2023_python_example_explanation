@@ -52,4 +52,23 @@ This function is designed to identify and list the names of header files with ".
 </div>
 
 This function returns the unique names of [0284_001_004, 0284_002_005, 0284_003_006, ..., 0284_085_074] as the `record_names` list
- 
+
+**4- load_recording_data:**
+```python
+# Load the WFDB data for the Challenge (but not all possible WFDB files).
+def load_recording_data(record_name, check_values=False):
+    # Allow either the record name or the header filename.
+    root, ext = os.path.splitext(record_name)
+    if ext=='':
+        header_file = record_name + '.hea'
+    else:
+        header_file = record_name
+
+    # Load the header file.
+    if not os.path.isfile(header_file):
+        raise FileNotFoundError('{} recording not found.'.format(record_name))
+
+    with open(header_file, 'r') as f:
+        header = [l.strip() for l in f.readlines() if l.strip()]
+```
+This function is designed to load data once the header_file's existence is confirmed, the code opens the header file and reads all the lines, strips any leading or trailing whitespace from  each line, and also excludes any empty line. The result is stored in the list and list `header`.
