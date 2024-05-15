@@ -138,6 +138,9 @@ Consider the above code and the following pictures from the **0284_001_004_EEG.h
 
 *`channels` = ['Fp1', 'Fp2', 'F3', ...]*
 
+<div align="center">
+<img src="I-care pic.JPG" alt="Alt text" width="850" height="450">
+</div>
 
 
 
