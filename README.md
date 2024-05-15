@@ -124,7 +124,7 @@ Consider the above code and the following pictures from the **0284_001_004_EEG.h
 
 **Subsequent lines:** If the line does not start with '#' and is not empty, the first component is `signal_file`, the third component contains `gain` (before parenthesis) and `baseline` (in parenthesis), the fifth is `adc_zero` (corresponds to the zero voltage level in the analog-to-digital conversion process), the sixth is `initial_value` (initial digital values), the seventh is `checksum` (used for verifying the integrity of the recorded data), and the ninth component is 'channel' (electrode position on the scalp). For example, for the **0284_001_004_EEG.hea** record which picture is shown below, we have:
 
-*`signal_files` = ['0284_001_004_EEG', '0284_001_004_EEG', '0284_001_004_EEG', ...]*
+*`signal_files` = ['0284_001_004_EEG.mat', '0284_001_004_EEG.mat', '0284_001_004_EEG.mat', ...]*
 
 *`gains` = [17.98.0017...., 17.74796..., 15.71809..., ...]*
 
@@ -151,14 +151,13 @@ Consider the above code and the following pictures from the **0284_001_004_EEG.h
             + ' references {} signal files; one signal file expected.'.format(num_signal_files))
 ```
 
-Ensures that the header file references only one signal file and if there is more than one, it raises an error.
+The above code ensures that the header file references only one signal file and if there is more than one, it raises an error.
 
 ```python
-    # Check that the header file only references one signal file. WFDB format allows for multiple signal files, but, for
-    # simplicity, we have not done that here.
-    num_signal_files = len(set(signal_files))
-    if num_signal_files!=1:
-        raise NotImplementedError('The header file {}'.format(header_file) \
-            + ' references {} signal files; one signal file expected.'.format(num_signal_files))
+    # Load the signal file.
+    head, tail = os.path.split(header_file)
+    signal_file = os.path.join(head, list(signal_files)[0])
+    data = np.asarray(sp.io.loadmat(signal_file)['val'])
 ```
+The above code loads the signal file (`.mat` format) and converts it to a 2D NumPy array where each row represents a channel. The `val` while reading the signal file, refers to a specific variable inside the `.mat` file that contains the actual signal data.
 
