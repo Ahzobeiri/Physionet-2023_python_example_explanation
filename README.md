@@ -142,5 +142,13 @@ Consider the above code and the following pictures from the **0284_001_004_EEG.h
 <img src="Data-value-explanation-I-care.png" alt="Alt text" width="800" height="550">
 </div>
 
+```python
+    # Check that the header file only references one signal file. WFDB format allows for multiple signal files, but, for
+    # simplicity, we have not done that here.
+    num_signal_files = len(set(signal_files))
+    if num_signal_files!=1:
+        raise NotImplementedError('The header file {}'.format(header_file) \
+            + ' references {} signal files; one signal file expected.'.format(num_signal_files))
+```
 
-
+Ensures that the header file references only one signal file and if there is more than one, it raises an erros
