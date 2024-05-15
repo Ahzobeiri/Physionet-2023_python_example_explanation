@@ -72,3 +72,47 @@ def load_recording_data(record_name, check_values=False):
         header = [l.strip() for l in f.readlines() if l.strip()]
 ```
 This function is designed to load data from the header_file while its existence is confirmed. The code first opens the header file and reads all the lines, strips any leading or trailing whitespace from  each line, and also excludes any empty line. The result is then stored in the list named `header`.
+
+```python
+   # Parse the header file.
+    record_name = None
+    num_signals = None
+    sampling_frequency = None
+    num_samples = None
+    signal_files = list()
+    gains = list()
+    baselines = list()
+    adc_zeros = list()
+    channels = list()
+    initial_values = list()
+    checksums = list()
+
+    for i, l in enumerate(header):
+        arrs = [arr.strip() for arr in l.split(' ')]
+        # Parse the record line.
+        if i==0:
+            record_name = arrs[0]
+            num_signals = int(arrs[1])
+            sampling_frequency = float(arrs[2])
+            num_samples = int(arrs[3])
+        # Parse the signal specification lines.
+        elif not l.startswith('#') or len(l.strip()) == 0:
+            signal_file = arrs[0]
+            if '(' in arrs[2] and ')' in arrs[2]:
+                gain = float(arrs[2].split('/')[0].split('(')[0])
+                baseline = float(arrs[2].split('/')[0].split('(')[1].split(')')[0])
+            else:                
+                gain = float(arrs[2].split('/')[0])
+                baseline = 0.0
+            adc_zero = int(arrs[4])
+            initial_value = int(arrs[5])
+            checksum = int(arrs[6])
+            channel = arrs[8]
+            signal_files.append(signal_file)
+            gains.append(gain)
+            baselines.append(baseline)
+            adc_zeros.append(adc_zero)
+            initial_values.append(initial_value)
+            checksums.append(checksum)
+            channels.append(channel)
+```
