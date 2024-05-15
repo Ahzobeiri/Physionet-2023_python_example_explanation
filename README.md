@@ -5,7 +5,7 @@ The open-source segment of the "[I-CARE dataset](https://physionet.org/content/i
 
 First of all, we will start with the [helper_code]([https://github.com/physionetchallenges/python-example-2024/blob/main/helper_code.py](https://github.com/physionetchallenges/python-example-2023/blob/master/helper_code.py)):
 # helper_code
-In this segment of the Python example code, I will discusse some helper functions that will be utilized during the implementation:
+In this segment of the Python example code, I will discuss some helper functions that will be utilized during the implementation:
 
 **1- find_data_folders:**
 ```python
@@ -119,7 +119,7 @@ This function is designed to load data from the header_file while its existence 
 Consider the above code and the following pictures from the **0284_001_004_EEG.hea** record. The code first initializes various variables and lists that will store information for each signal described in the header:
 
 **First line:** contains the `record_name`, `num_signals`, `sampling_frequency`, and `num_samples`. For example, for the **0284_001_004_EEG.hea** record which picture is shown below, we have: 
-`record_name` = "0284_001_004_EEG" ;  `num_signals` = 19 ;  `sampling_frequency` = 500 Hz ;  `num_samples` = 1578500 (1578500/500 = 3157s = 52 min which is confirming the #Start time: 4:07:23, and #End time: 4:59:59)
+*`record_name` = "0284_001_004_EEG" ;  `num_signals` = 19 ;  `sampling_frequency` = 500 Hz ;  `num_samples` = 1578500 (1578500/500 = 3157s = 52 min which is confirming the #Start time: 4:07:23, and #End time: 4:59:59)*
 
 **Subsequent lines:** If the line does not start with '#' and is not empty, the first component is `signal_file`, the third component contains `gain` (before parenthesis) and `baseline` (in parenthesis), the fifth is `adc_zero` (corresponds to the zero voltage level in the analog-to-digital conversion process), the sixth is `initial_value` (initial digital values), the seventh is `checksum` (used for verifying the integrity of the recorded data), and the ninth component is 'channel' (electrode position on the scalp). For example, for the **0284_001_004_EEG.hea** record which picture is shown below, we have:
 
