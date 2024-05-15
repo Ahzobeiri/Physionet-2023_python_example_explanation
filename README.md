@@ -139,7 +139,7 @@ Consider the above code and the following pictures from the **0284_001_004_EEG.h
 *`channels` = ['Fp1', 'Fp2', 'F3', ...]*
 
 <div align="center">
-<img src="Data-value-explanation-I-care.png" alt="Alt text" width="900" height="650">
+<img src="Data-value-explanation-I-care.png" alt="Alt text" width="800" height="550">
 </div>
 
 
