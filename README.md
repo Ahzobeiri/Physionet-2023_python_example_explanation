@@ -118,7 +118,7 @@ This function is designed to load data from the header_file while its existence 
 ```
 consider the above code and the following pictures from the **0284_001_004_EEG.hea** record. The code first initializes various variables and lists that will store information for each signal described in the header:
 
-*First line*: contains the `record_name`, `num_signals`, `sampling_frequency`, and `num_samples`. For example, for the record which its picture is shown below, we have: 
+**First line:** contains the `record_name`, `num_signals`, `sampling_frequency`, and `num_samples`. For example, for the record which picture is shown below, we have: 
 `record_name` = "0284_001_004_EEG" ;  `num_signals` = 19 ;  `sampling_frequency` = 500 Hz ;  `num_samples` = 1578500 (1578500/500 = 3157s = 52 min which is confirming the #Start time: 4:07:23, and #End time: 4:59:59)
 
-Subsequent lines: If the line does not start with '#' and is not empty, the first component is `signal_file`
+**Subsequent lines:** If the line does not start with '#' and is not empty, the first component is `signal_file`, the third component contains `gain` (before parenthesis) and `baseline` (in parenthesis), the fifth is `adc_zero` (reference points for zero voltage input), the sixth is `initial_value` (initial digital values), the seventh is `checksum` (used for verifying the integrity of the recorded data), and the ninth component is 'channel' (electrode position on the scalp). 
