@@ -159,5 +159,6 @@ The above code ensures that the header file references only one signal file and 
     signal_file = os.path.join(head, list(signal_files)[0])
     data = np.asarray(sp.io.loadmat(signal_file)['val'])
 ```
-The above code loads the signal file (`.mat` format) and converts it to a 2D NumPy array where each row represents a channel. The `val` while reading the signal file, refers to a specific variable inside the `.mat` file that contains the actual signal data.
+The above code loads the signal file (`.mat` format created by MATLAB) and converts it to a 2D NumPy array where each row represents a channel.
+The `val` while reading the signal file, refers to a specific variable inside the `.mat` file that contains the actual signal data.
 
