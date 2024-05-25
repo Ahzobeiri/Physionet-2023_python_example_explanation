@@ -163,5 +163,5 @@ The above code loads the signal file (`.mat` format created by MATLAB) and conve
 
 The `scipy.io.loadmat` function from the SciPy library is used to read the content of `.mat` file into a Python dictionary, where the keys are the variable names stored in the file, and the values are the corresponding data arrays.
 In this case, the signal data is stored under the key 'val'. In other words, the `val` while reading the signal file, refers to a specific variable inside the `.mat` file that contains the actual signal data.
-Given the header file 0284_001_004_EEG.hea and the corresponding signal file 0284_001_004_EEG.mat, `data` is now a NumPy array with shape (19, 1578500), where 19 is the number of channels and 1578500 is the number of samples per channel.
+Given the header file 0284_001_004_EEG.hea and the corresponding signal file 0284_001_004_EEG.mat, `data` is now a NumPy array with shape **(19, 1578500)**, where 19 is the number of channels and 1578500 is the number of samples per channel.
 
