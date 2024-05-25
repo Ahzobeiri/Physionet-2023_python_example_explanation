@@ -160,5 +160,7 @@ The above code ensures that the header file references only one signal file and 
     data = np.asarray(sp.io.loadmat(signal_file)['val'])
 ```
 The above code loads the signal file (`.mat` format created by MATLAB) and converts it to a 2D NumPy array where each row represents a channel.
-The `val` while reading the signal file, refers to a specific variable inside the `.mat` file that contains the actual signal data.
+
+The `scipy.io.loadmat` function from the SciPy library is used to read the content of `.mat` file into a Python dictionary, where the keys are the variable names stored in the file, and the values are the corresponding data arrays.
+In this case, the signal data is stored under the key 'val'. In other words, the `val` while reading the signal file, refers to a specific variable inside the `.mat` file that contains the actual signal data.
 
