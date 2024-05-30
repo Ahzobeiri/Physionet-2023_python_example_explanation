@@ -188,5 +188,13 @@ Given the header file "0284_001_004_EEG.hea" and the corresponding signal file "
                     + ' is inconsistent with the checksum value for channel {} in the signal data'.format(channels[i]))
 ```
 
-The above code optionally, checks that the initial values and checksums (by summing all sample values) match the values specified in the header file. For example, from "0284_001_004_EEG.hea", for channel "Fp1": the initial_values[0] = 24177, and checksums[0] = -9802, if the data[0,0] = 24177, and np.sum(data[0,:], dtype=np.int16) = -9802 then the checks pass since the values match.
+The above code optionally checks that the initial values and checksums (by summing all sample values) match the values specified in the header file. For example, from "0284_001_004_EEG.hea", for channel "Fp1": the initial_values[0] = 24177, and checksums[0] = -9802, if the data[0,0] = 24177, and np.sum(data[0,:], dtype=np.int16) = -9802 then the checks pass since the values match.
+
+```python
+    # Rescale the signal data using the gains and offsets.
+    rescaled_data = np.zeros(np.shape(data), dtype=np.float32)
+    for i in range(num_channels):
+        rescaled_data[i, :] = (np.asarray(data[i, :], dtype=np.float64) - baselines[i] - adc_zeros[i]) / gains[i]
+```
+The above code converts the raw digital values to physical units (voltage) by first subtracting the **baseline** (an offset that was present during the recording. It's essentially the zero-point of the ADC when the input signal is zero) and **ADC_Zero** (representing the value that the ADC considers as zero) and then dividing by **gain** (representing how many digital units correspond to one unit of the physical measurement volts). This process ensures that the zero point in the digital data corresponds to the actual zero point in the physical measurement. For example, for "Fp1" channel: assume data[0, :] = [24177, 24178, ...], as we now baselines[0] = 23877, adc_zeros[0] = 0, gains[0] = 17.980017...; Then the rescaled data calculation for the first sample is (24177-23877-0)/17.980017... = 16.67 (unit, e.g., volts). This means that a raw digital value of 24177 corresponds to approximately 16.68 volts after adjusting for baseline and gain.
 
