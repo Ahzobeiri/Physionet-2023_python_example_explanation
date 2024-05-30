@@ -173,5 +173,20 @@ In this case, the signal data is stored under the key 'val'. In other words, the
             + ' is inconsistent with the dimensions of the signal file.')
 ```
 The above code verifies that the dimensions of the signal data match the specifications in the header file.
-Given the header file 0284_001_004_EEG.hea and the corresponding signal file 0284_001_004_EEG.mat, `data` is now a NumPy array with shape **(19, 1578500)**, where 19 is the number of channels and 1578500 is the number of samples per channel.
+Given the header file "0284_001_004_EEG.hea" and the corresponding signal file "0284_001_004_EEG.mat", `data` is now a NumPy array with shape **(19, 1578500)**, where 19 is the number of channels and 1578500 is the number of samples per channel.
+
+```python
+ # Check that the initial value and checksums in the signal file are consistent with the initial value and checksums in the
+    # header file.
+    if check_values:
+        for i in range(num_channels):
+            if data[i, 0]!=initial_values[i]:
+                raise ValueError('The initial value in header file {}'.format(header_file) \
+                    + ' is inconsistent with the initial value for channel {} in the signal data'.format(channels[i]))
+            if np.sum(data[i, :], dtype=np.int16)!=checksums[i]:
+                raise ValueError('The checksum in header file {}'.format(header_file) \
+                    + ' is inconsistent with the checksum value for channel {} in the signal data'.format(channels[i]))
+```
+
+The above code optionally, checks that the initial values and checksums (by summing all sample values) match the values specified in the header file. For example, from "0284_001_004_EEG.hea", for channel "Fp1": the initial_values[0] = 24177, and checksums[0] = -9802, if the data[0,0] = 24177, and np.sum(data[0,:], dtype=np.int16) = -9802 then the checks pass since the values match.
 
