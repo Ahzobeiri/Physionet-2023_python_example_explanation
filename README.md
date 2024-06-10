@@ -198,3 +198,20 @@ The above code optionally checks that the initial values and checksums (by summi
 ```
 The above code converts the raw digital values to physical units (voltage) by first subtracting the **baseline** (an offset that was present during the recording. It's essentially the zero-point of the ADC when the input signal is zero) and **ADC_Zero** (representing the value that the ADC considers as zero) and then dividing by **gain** (representing how many digital units correspond to one unit of the physical measurement volts). This process ensures that the zero point in the digital data corresponds to the actual zero point in the physical measurement. For example, for "Fp1" channel: assume data[0, :] = [24177, 24178, ...], as we now baselines[0] = 23877, adc_zeros[0] = 0, gains[0] = 17.980017...; Then the rescaled data calculation for the first sample is (24177-23877-0)/17.980017... = 16.67 (unit, e.g., volts). This means that a raw digital value of 24177 corresponds to approximately 16.68 volts after adjusting for baseline and gain.
 
+# remove_data
+This part of the code is designed to selectively copy data files from an input dataset folder to an output folder, excluding `.mat` files. I will provide a detailed explanation of each part in the rest of this section:
+
+This code consists of three functions as follows:
+
+**1- get_parser():**
+```python
+def get_parser():
+    description = 'Remove data from the dataset.'
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('-i', '--input_folder', type=str, required=True)
+    parser.add_argument('-p', '--patient_ids', nargs='*', type=str, required=False, default=[])
+    parser.add_argument('-o', '--output_folder', type=str, required=True)
+    return parser
+```
+
+
