@@ -32,23 +32,26 @@ The most important parts of the [team_code.py](https://github.com/physionetchall
 ```python    
     patient_ids = find_data_folders(data_folder)
 ```
-(Go to [find_data_folders(data_folder)](#find_data_folders:) function of helper_code.py)
+
+find the data folders of patients.
+
+(Go to **find_data_folders** function of helper_code.py)
 
 
-    features = list()
-    outcomes = list()
-    cpcs = list()
+```python    
+current_features = get_features(data_folder, patient_ids[i])
+```
 
-    for i in range(num_patients):
-        if verbose >= 2:
-            print('    {}/{}...'.format(i+1, num_patients))
+(Go to **get_features** function of team_code.py)
 
-        current_features = get_features(data_folder, patient_ids[i])
-        features.append(current_features)
 
-        # Extract labels.
-        patient_metadata = load_challenge_data(data_folder, patient_ids[i])
-        current_outcome = get_outcome(patient_metadata)
+```python
+patient_metadata = load_challenge_data(data_folder, patient_ids[i])
+```
+(Go to **load_challenge_data** function of helper_code.py)
+
+
+current_outcome = get_outcome(patient_metadata)
         outcomes.append(current_outcome)
         current_cpc = get_cpc(patient_metadata)
         cpcs.append(current_cpc)
