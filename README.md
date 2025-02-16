@@ -6,6 +6,15 @@ The open-source segment of the "[I-CARE dataset](https://physionet.org/content/i
 After installing dependencies and requirements using the following command:
 ```python pip install -r requirements.txt```
 
+We first should run:
+
+```python train_model.py training_data model```
+
+Where training_data is the folder containing the data folders
+
+The train_model
+
+
 
 # 
 
