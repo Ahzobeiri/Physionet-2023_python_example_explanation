@@ -12,7 +12,11 @@ We first should run:
 
 Where training_data is the folder containing the data folders
 
-The train_model
+## 📝 train_model.py
+The most important part of the [train_model.py](https://github.com/physionetchallenges/python-example-2023/blob/master/train_model.py) is the following function:
+
+```python train_challenge_model(data_folder, model_folder, verbose) ### Teams: Implement this function!!!```
+
 
 
 
@@ -20,7 +24,7 @@ The train_model
 
 First of all, we will start with the [helper_code]([https://github.com/physionetchallenges/python-example-2024/blob/main/helper_code.py](https://github.com/physionetchallenges/python-example-2023/blob/master/helper_code.py)):
 
-## 📝 helper_code
+## 📝 helper_code.py
 In this segment of the Python example code, I will discuss some helper functions that will be utilized during the implementation:
 
 ### **1- find_data_folders:**
