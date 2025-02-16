@@ -9,7 +9,7 @@ After installing dependencies and requirements using the following command:
 We first should run:
 
 ```python
-train_model.py training_data model
+python train_model.py training_data model
 ```
 
 Where training_data is the folder containing the data folders
@@ -17,12 +17,12 @@ Where training_data is the folder containing the data folders
 ## 📝 train_model.py
 The most important part of the [train_model.py](https://github.com/physionetchallenges/python-example-2023/blob/master/train_model.py) is the following function:
 
+
 ```python 
-train_challenge_model(data_folder, model_folder, verbose) ### Teams: Implement this function!!!
+train_challenge_model(data_folder, model_folder, verbose)
 ```
 
-
-
+(Go to **[train_challenge_model(data_folder, model_folder, verbose]())** function of team_code.py
 
 # 
 
