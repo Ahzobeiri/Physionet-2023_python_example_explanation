@@ -32,7 +32,7 @@ The most important parts of the [team_code.py](https://github.com/physionetchall
 ```python    
     patient_ids = find_data_folders(data_folder)
 ```
-(Go to [find_data_folders(data_folder)](#-find_data_folders:) function of helper_code.py)
+(Go to [find_data_folders(data_folder)](#find_data_folders:) function of helper_code.py)
 
 
     features = list()
