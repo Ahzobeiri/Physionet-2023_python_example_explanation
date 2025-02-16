@@ -22,7 +22,67 @@ The most important part of the [train_model.py](https://github.com/physionetchal
 train_challenge_model(data_folder, model_folder, verbose)
 ```
 
-(Go to **[train_challenge_model(data_folder, model_folder, verbose]())** function of team_code.py
+(Go to **[train_challenge_model(data_folder, model_folder, verbose)](#-def-train_challenge_model(data_folder, model_folder, verbose):))** function of team_code.py)
+
+## 👨🏻‍🤝‍👨🏻 team_code.py
+The most important parts of the [team_code.py](https://github.com/physionetchallenges/python-example-2023/blob/master/team_code.py) are the following functions:
+
+### def train_challenge_model(data_folder, model_folder, verbose):
+
+```python    
+    patient_ids = find_data_folders(data_folder)
+```
+(Go to **[find_data_folders(data_folder)](#-)** function of team_code.py)
+
+
+    features = list()
+    outcomes = list()
+    cpcs = list()
+
+    for i in range(num_patients):
+        if verbose >= 2:
+            print('    {}/{}...'.format(i+1, num_patients))
+
+        current_features = get_features(data_folder, patient_ids[i])
+        features.append(current_features)
+
+        # Extract labels.
+        patient_metadata = load_challenge_data(data_folder, patient_ids[i])
+        current_outcome = get_outcome(patient_metadata)
+        outcomes.append(current_outcome)
+        current_cpc = get_cpc(patient_metadata)
+        cpcs.append(current_cpc)
+
+    features = np.vstack(features)
+    outcomes = np.vstack(outcomes)
+    cpcs = np.vstack(cpcs)
+
+    # Train the models.
+    if verbose >= 1:
+        print('Training the Challenge model on the Challenge data...')
+
+    # Define parameters for random forest classifier and regressor.
+    n_estimators   = 123  # Number of trees in the forest.
+    max_leaf_nodes = 456  # Maximum number of leaf nodes in each tree.
+    random_state   = 789  # Random state; set for reproducibility.
+
+    # Impute any missing features; use the mean value by default.
+    imputer = SimpleImputer().fit(features)
+
+    # Train the models.
+    features = imputer.transform(features)
+    outcome_model = RandomForestClassifier(
+        n_estimators=n_estimators, max_leaf_nodes=max_leaf_nodes, random_state=random_state).fit(features, outcomes.ravel())
+    cpc_model = RandomForestRegressor(
+        n_estimators=n_estimators, max_leaf_nodes=max_leaf_nodes, random_state=random_state).fit(features, cpcs.ravel())
+
+    # Save the models.
+    save_challenge_model(model_folder, imputer, outcome_model, cpc_model)
+
+    if verbose >= 1:
+        print('Done.')
+
+
 
 # 
 
@@ -31,7 +91,7 @@ First of all, we will start with the [helper_code]([https://github.com/physionet
 ## 📝 helper_code.py
 In this segment of the Python example code, I will discuss some helper functions that will be utilized during the implementation:
 
-### **1- find_data_folders:**
+### find_data_folders:
 ```python
 def find_data_folders(root_folder):
     data_folders = list()
