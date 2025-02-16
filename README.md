@@ -12,7 +12,7 @@ First of all, we will start with the [helper_code]([https://github.com/physionet
 ## 📝 helper_code
 In this segment of the Python example code, I will discuss some helper functions that will be utilized during the implementation:
 
-**1- find_data_folders:**
+### **1- find_data_folders:**
 ```python
 def find_data_folders(root_folder):
     data_folders = list()
