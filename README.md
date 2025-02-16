@@ -22,7 +22,7 @@ The most important part of the [train_model.py](https://github.com/physionetchal
 train_challenge_model(data_folder, model_folder, verbose)
 ```
 
-(Go to **[train_challenge_model(data_folder, model_folder, verbose)](#-def-train_challenge_model(data_folder, model_folder, verbose):))** function of team_code.py)
+(Go to **[train_challenge_model(data_folder, model_folder, verbose)](#-def-train_challenge_model(data_folder, model_folder, verbose):)** function of team_code.py)
 
 ## 👨🏻‍🤝‍👨🏻 team_code.py
 The most important parts of the [team_code.py](https://github.com/physionetchallenges/python-example-2023/blob/master/team_code.py) are the following functions:
