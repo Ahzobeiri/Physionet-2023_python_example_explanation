@@ -30,10 +30,10 @@ The most important parts of the [team_code.py](https://github.com/physionetchall
 ### def train_challenge_model(data_folder, model_folder, verbose):
 
 ```python    
-    patient_ids = find_data_folders(data_folder)
+patient_ids = find_data_folders(data_folder)
 ```
 
-find the data folders of patients.
+Find the data folders of patients.
 
 (Go to **find_data_folders** function of helper_code.py)
 
@@ -42,24 +42,48 @@ find the data folders of patients.
 current_features = get_features(data_folder, patient_ids[i])
 ```
 
+Extracrt and return demographic, EEG, and ECG features of each patient.
+
 (Go to **get_features** function of team_code.py)
 
 
 ```python
 patient_metadata = load_challenge_data(data_folder, patient_ids[i])
 ```
+
+load the text file (which includes demographic features and outcomes) of each patient.
+
 (Go to **load_challenge_data** function of helper_code.py)
 
-
+```python
 current_outcome = get_outcome(patient_metadata)
-        outcomes.append(current_outcome)
-        current_cpc = get_cpc(patient_metadata)
-        cpcs.append(current_cpc)
+outcomes.append(current_outcome)
+```
 
-    features = np.vstack(features)
-    outcomes = np.vstack(outcomes)
-    cpcs = np.vstack(cpcs)
+get the outcome of each patient from text file and append them in a row.
 
+(Go to **get_outcome** function of helper_code.py)
+
+
+```python
+current_cpc = get_cpc(patient_metadata)
+cpcs.append(current_cpc)
+```
+
+get the cpc of each patient from text file and append them in a row.
+
+(Go to **get_cpc** function of helper_code.py)
+
+
+```python
+features = np.vstack(features)
+outcomes = np.vstack(outcomes)
+cpcs = np.vstack(cpcs)
+```
+
+These python codes vertically stack (concatenat) arrays along the first axis (axis=0). It essentially takes multiple arrays and stacks them on top of each other to create a larger array.  They combine lists of feature vectors, outcomes, and CPC scores into NumPy arrays where each row corresponds to a different patient.
+
+```python
     # Train the models.
     if verbose >= 1:
         print('Training the Challenge model on the Challenge data...')
@@ -84,7 +108,7 @@ current_outcome = get_outcome(patient_metadata)
 
     if verbose >= 1:
         print('Done.')
-
+```
 
 
 # 
